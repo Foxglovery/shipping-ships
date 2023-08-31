@@ -7,7 +7,7 @@ document.addEventListener(
         const itemClicked = clickEvent.target
         // Was a shipping ship list item clicked?
         const clickedship = itemClicked.dataset.haulerid
-        const haulers = getHaulers()
+        const haulers = structuredClone(getHaulers())
         if(itemClicked.dataset.type === "ship"){
                 
                 const shipName= itemClicked.dataset.name

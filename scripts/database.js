@@ -1,12 +1,12 @@
 const database = {
     docks: [
-        { id: 1, location: "Shanghai, China", volume: "43.5" },
-        { id: 2, location: "Busan, South Korea", volume: "21.6" },
-        { id: 3, location: "Rotterdam, The Netherlands", volume: "14.35" },
-        { id: 4, location: "Antwerp, Belgium", volume: "12.04" }
+        { id: 1, location: "Shanghai, China", volume: "43.5", allowedHaulers: [4,5] },
+        { id: 2, location: "Busan, South Korea", volume: "21.6", allowedHaulers: [1] },
+        { id: 3, location: "Rotterdam, The Netherlands", volume: "14.35", allowedHaulers: [1, 2]},
+        { id: 4, location: "Antwerp, Belgium", volume: "12.04", allowedHaulers: [2,5] }
     ],
     haulers: [
-        { id: 1, name: "Puma Thurmon", portId: 2 },
+        { id: 1, name: "Puma Thurmon", portId: 3 },
         { id: 2, name: "Zebra Messing", portId: 4 },
         { id: 3, name: "Lark Hammill", portId: 3 },
         { id: 4, name: "Shloe Cevigny", portId: 1 },
@@ -33,13 +33,46 @@ const database = {
 }
 
 export const getDocks = () => {
-    return database.docks.map(dock => ({...dock}))
+    const dockMap = database.docks.map(dock => ({...dock}))
+
+    dockMap.sort(function (a, b) {
+        if (a.location < b.location) {
+          return -1;
+        }
+        if (a.location > b.location) {
+          return 1;
+        }
+        return 0;
+      });
+    return dockMap
+    
 }
 
 export const getHaulers = () => {
-    return database.haulers.map(hauler =>({...hauler}))
+    const haulerMap = database.haulers.map(hauler =>({...hauler}))
+        haulerMap.sort(function (a, b) {
+            if (a.name < b.name) {
+            return -1;
+            }
+            if (a.name > b.name) {
+            return 1;
+            }
+            return 0;
+        });
+    return haulerMap
+
 }
 
 export const getShips = () => {
-    return database.ships.map(ship =>({...ship}))
+    const shipMap = database.ships.map(ship =>({...ship}))
+        shipMap.sort(function (a, b) {
+            if (a.name < b.name) {
+            return -1;
+            }
+            if (a.name > b.name) {
+            return 1;
+            }
+            return 0;
+        });
+    return shipMap
 }

@@ -20,11 +20,6 @@ const applicationHTML = `
         <h2>Ships</h2>
         ${shipList()}
     </section>
-</article>
-
-<article class="assignments">
-    <h2>Current Assignments</h2>
-    
 </article>`
 
 mainContainer.innerHTML=applicationHTML

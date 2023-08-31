@@ -8,7 +8,7 @@ document.addEventListener(
         
         const itemClicked = clickEvent.target
         const clickedHauler = itemClicked.dataset.haulerid
-        const ships = getShips()
+        const ships = structuredClone(getShips())
         if(itemClicked.dataset.type ==="hauler") {
             
             let shipsHauled = 0
