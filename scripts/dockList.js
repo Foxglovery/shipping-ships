@@ -12,7 +12,7 @@ document.addEventListener(
             if (itemClicked.dataset.type === "dock") {
                 
                 let dock = docks.find(dock => dock.id === parseInt(clickedDock)) //finds dock object with same id as clicked    
-                
+                // let booking = bookings.find(booking => bookings.venueId === parseInt(clickedVenueId))
                 matchingHaulers = haulers.filter(hauler => dock.allowedHaulers.includes(hauler.portId)) //filter method crates new array of haulers wherein portid is INCLUDED in the dock's allowed haulers
             
             if(matchingHaulers.length === 0) { //if new array is empty, no haulers
